@@ -1,0 +1,23 @@
+:root {
+    --color-accent-green: #e8ffeb;
+    --color-middle-green: #7dab81;
+    --color-main-green: #2f4f36;
+    --color-image: #89a38a;
+
+    --color-accent-pink: #ffd9fb;
+    --color-main-pink: #a1649a;
+
+    --color-accent-yellow: #fff2b3;
+}
+
+body.dark-mode {
+    --color-accent-green: #2f4f36;
+    --color-middle-green: #7dab81;
+    --color-main-green: #e8ffeb;
+    --color-image: #435343;
+
+    --color-accent-pink: #a1649a;
+    --color-main-pink: #ffd9fb;
+
+    --color-accent-yellow: #fff2b3;
+}

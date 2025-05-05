@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stupid shopping site</title>
+    <link rel="stylesheet" href="shopping.css">
+    <script type="module" src="shopping.mjs"></script>
+</head>
+<body>
+    <header>
+        <h1>Stupid Shopping Site</h1>
+        <div class="searchbar">
+            <label class="screen-reader-text" for="search-bar">Search our stupid products</label>
+            <input id="search-bar" placeholder="Search our stupid products" />
+            <button>Search</button>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Filters</h2>
+            <div class="filters">
+                <label for="minPrice">Min price ($)</label>
+                <input id="minPrice" type="number" min="0"/>
+                <label for="maxPrice">Max price ($)</label>
+                <input id="maxPrice" type="number" min="1" />
+            </div>
+        </section>
+
+        <section class="product-list">
+            <h2>Search results</h2>
+            <article>
+                <img src="https://placehold.co/200x200" alt="Shoes" />
+                <div class="product-details">
+                    <h3>Shoes</h3>
+                    <p>A cool shoe product</p>
+                    <p class="price">$100</p>
+                    <div><button class="buy-button">Add to cart</button> <span class="num-in-cart">2 in cart</span></div>
+                </div>
+            </article>
+            <article>
+                <img src="https://placehold.co/200x200" alt="Chips" />
+                <div class="product-details">
+                    <h3>Chips</h3>
+                    <p>Delicious.</p>
+                    <p class="price">$5</p>
+                    <div><button class="buy-button">Add to cart</button> <span class="num-in-cart">1 in cart</span></div>
+                </div>
+            </article>
+            <article>
+                <img src="https://placehold.co/200x200" alt="Cookies" />
+                <div class="product-details">
+                    <h3>Cookies</h3>
+                    <p>Delicious.</p>
+                    <p class="price">$3</p>
+                    <div><button class="buy-button">Add to cart</button></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="cart">
+            <h2>Cart</h2>
+            <div class="cart-items">
+                <p>Shoes x2</p>
+                <button class="remove-button">Remove</button>
+                <p>Cookies x1</p>
+                <button class="remove-button">Remove</button>
+            </div>
+            <button class="buy-button">Check out</button>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "csc-437-lab-8",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pointyrook/CSC-437-Lab-8.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pointyrook/CSC-437-Lab-8/issues"
+  },
+  "homepage": "https://github.com/Pointyrook/CSC-437-Lab-8#readme",
+  "description": "",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

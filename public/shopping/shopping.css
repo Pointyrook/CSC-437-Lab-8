@@ -1,0 +1,118 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+:root {
+    --color-primary: #ffbd63;
+}
+.screen-reader-text {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: sans-serif;
+}
+header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--color-primary), white);
+}
+.searchbar {
+    display: flex;
+}
+.searchbar input {
+    padding: 0.5rem;
+}
+.searchbar button {
+    border: none;
+    padding: 0 0.5rem;
+    background-color: #bd7e1a;
+    color: white;
+}
+
+main {
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: auto 1fr auto;
+}
+section {
+    padding: 1rem;
+}
+section h2 {
+    margin-bottom: 1rem;
+}
+button {
+    cursor: pointer;
+}
+
+/* Search results section */
+article {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    padding: 2rem 1rem;
+    gap: 1em;
+    border: 1px solid lavender;
+    margin: 1rem 0;
+}
+article > img {
+    max-width: 100%;
+}
+.product-details h3 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+.price {
+    font-size: 1.5em;
+    margin: 1.25rem 0 0.5rem;
+}
+.buy-button {
+    background-color: var(--color-primary);
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    border: 0;
+}
+.num-in-cart {
+    font-size: smaller;
+    font-style: italic;
+    margin-left: 0.5rem;
+}
+
+/* Shopping cart styles */
+.cart > * {
+    margin-bottom: 1rem;
+}
+.cart-items {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.25rem 1rem;
+    align-items: center;
+}
+.cart-items-header {
+    border-bottom: 1px solid lavender;
+    margin-bottom: 0.5rem;
+}
+
+.remove-button {
+    background-color: firebrick;
+    color: white;
+    padding: 0.25rem;
+    border: 0;
+    border-radius: 0.2rem;
+}
+
+/* Filters panel */
+.filters {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.5rem;
+    align-items: center;
+}
+.filters input[type=number] {
+    max-width: 4em;
+}
