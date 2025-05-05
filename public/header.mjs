@@ -51,7 +51,7 @@ document.body.addEventListener("click", (e) => {
     }
 })
 
-menuButton.addEventListener("click", (e) => {
+menuButton.addEventListener("click", () => {
     nav.setAttribute("style", "display: flex");
 })
 
