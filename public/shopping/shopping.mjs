@@ -103,7 +103,8 @@ function rerenderCart() {
                 <button class="remove-button">Remove</button>`;
         }
 
-        const button = cartItems.querySelectorAll(".remove-button")[-1];
+        const allButtons = cartItems.querySelectorAll(".remove-button");
+        const button = allButtons[allButtons.length - 1];
         button.addEventListener("click", () => {
             if (product.numInCart !== 0) {
                 product.numInCart--;
