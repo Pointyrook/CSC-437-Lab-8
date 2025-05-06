@@ -70,11 +70,14 @@ onresize = () => {
 
 const darkModeCheckbox = document.querySelector(".dark-mode-checkbox").firstElementChild;
 darkModeCheckbox.addEventListener("change", (e) => {
+    console.log(e.target);
+    console.log(e.target.checked);
     document.body.classList.toggle("dark-mode");
     localStorage.setItem("dark-mode", e.target.checked);
+    console.log(localStorage);
 })
 
 if (localStorage.getItem("dark-mode") === "true") {
-    darkModeCheckbox.dispatchEvent(new Event("change"));
+    document.body.classList.toggle("dark-mode");
     darkModeCheckbox.checked = true;
 }
