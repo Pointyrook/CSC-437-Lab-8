@@ -30,27 +30,6 @@ const PRODUCTS = [ // Imagine this data came in via the server
 ];
 
 /**
- * Takes an HTML string and returns an DocumentFragment object containing HTML element objects.  If the input has a
- * single root element like "<div><p>child</p></div>", you can access it via fragment.firstElementChild.  Otherwise, if
- * it's multiple elements like "<li>item1</li><li>item2</li>" you can access them via fragment.children.
- *
- * @param {string} htmlString - a string of some HTML
- * @return {DocumentFragment} - DocumentFragment object containing HTML elements
- */
-const PARSER = new DOMParser();
-
-export function toHtmlElement(htmlString) {
-    const doc = PARSER.parseFromString(htmlString, "text/html");
-    const collection = doc.head.childElementCount
-        ? doc.head.children
-        : doc.body.children;
-    const fragment = new DocumentFragment();
-
-    fragment.replaceChildren(...collection);
-    return fragment;
-}
-
-/**
  * Turns a product data object into HTML.
  *
  * @param product product data
@@ -67,6 +46,13 @@ function renderProductCard(product) {
             <p class="price">$${product.price}</p>
             <div><button class="buy-button">Add to cart</button> <span class="num-in-cart">${product.numInCart} in cart</span></div>
         </div>`;
+
+    let button = article.querySelector(".buy-button");
+    button.addEventListener("click", () => {
+        product.numInCart++;
+        rerenderAllProducts();
+        rerenderCart();
+    })
 
     return article;
 }
@@ -116,63 +102,25 @@ function rerenderCart() {
                 <p>${product.name} x${product.numInCart}</p>
                 <button class="remove-button">Remove</button>`;
         }
-    })
-}
 
-function setUpButtons() {
-    const buyButtons = document.querySelectorAll(".buy-button");
-    const removeButtons = document.querySelectorAll(".remove-button");
-    const minPriceInput = document.querySelector("#minPrice");
-    const maxPriceInput = document.querySelector("#maxPrice");
-
-    buyButtons.forEach(button => {
+        const button = cartItems.querySelector(".remove-button");
         button.addEventListener("click", () => {
-            const buttonProductName = button.parentElement.parentElement.querySelector("h3").innerText;
-            for (let product of PRODUCTS) {
-                if (buttonProductName === product.name) {
-                    product.numInCart++;
-
-                    rerenderAllProducts();
-                    rerenderCart();
-                    setUpButtons();
-                    break;
-                }
-            }
+            product.numInCart--;
+            rerenderAllProducts();
+            rerenderCart();
         })
     })
-
-    removeButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const buttonProductName = removeLastWord(button.previousElementSibling.innerText);
-            for (let product of PRODUCTS) {
-                if (buttonProductName === product.name) {
-                    product.numInCart--;
-
-                    rerenderAllProducts();
-                    rerenderCart();
-                    setUpButtons();
-                    break;
-                }
-            }
-        })
-    })
-
-    minPriceInput.addEventListener("change", () => {
-        rerenderAllProducts();
-    })
-
-    maxPriceInput.addEventListener("change", () => {
-        rerenderAllProducts();
-    })
-}
-
-function removeLastWord(str) {
-    var lastIndex = str.lastIndexOf(" ");
-    return str.substring(0, lastIndex);
 }
 
 const minPriceInput = document.querySelector("#minPrice");
 const maxPriceInput = document.querySelector("#maxPrice");
+minPriceInput.addEventListener("input", () => {
+    rerenderAllProducts();
+})
+maxPriceInput.addEventListener("change", () => {
+    rerenderAllProducts();
+})
+
 /**
  * Returns whether a product should be visible based on the current values of the price filters.
  *
@@ -199,4 +147,3 @@ function shouldProductBeVisible(product) {
 
 rerenderAllProducts();
 rerenderCart();
-setUpButtons();
