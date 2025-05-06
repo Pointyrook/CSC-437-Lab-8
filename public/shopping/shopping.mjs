@@ -105,7 +105,9 @@ function rerenderCart() {
 
         const button = cartItems.querySelector(".remove-button");
         button.addEventListener("click", () => {
-            product.numInCart--;
+            if (product.numInCart !== 0) {
+                product.numInCart--;
+            }
             rerenderAllProducts();
             rerenderCart();
         })
