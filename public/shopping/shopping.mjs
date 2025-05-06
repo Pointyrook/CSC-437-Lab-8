@@ -103,13 +103,13 @@ function rerenderCart() {
                 <button class="remove-button">Remove</button>`;
         }
 
-        const button = cartItems.querySelector(".remove-button");
+        const button = cartItems.querySelectorAll(".remove-button")[-1];
         button.addEventListener("click", () => {
             if (product.numInCart !== 0) {
                 product.numInCart--;
+                rerenderAllProducts();
+                rerenderCart();
             }
-            rerenderAllProducts();
-            rerenderCart();
         })
     })
 }
