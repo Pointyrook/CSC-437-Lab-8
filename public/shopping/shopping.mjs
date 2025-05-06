@@ -47,7 +47,7 @@ function renderProductCard(product) {
             <div><button class="buy-button">Add to cart</button> <span class="num-in-cart">${product.numInCart} in cart</span></div>
         </div>`;
 
-    let button = article.querySelector(".buy-button");
+    const button = article.querySelector(".buy-button");
     button.addEventListener("click", () => {
         product.numInCart++;
         rerenderAllProducts();
@@ -95,23 +95,27 @@ function rerenderCart() {
     const cartItems = document.querySelector(".cart-items");
 
     cartItems.innerHTML = "";
+    cartItems.style.display = "flex";
+    cartItems.style.flexDirection = "column";
+    cartItems.style.alignItems = "start";
 
     PRODUCTS.forEach(product => {
         if (product.numInCart !== 0) {
-            cartItems.innerHTML += `
-                <p>${product.name} x${product.numInCart}</p>
-                <button class="remove-button">Remove</button>`;
-        }
+            const div = document.createElement("div");
 
-        const allButtons = cartItems.querySelectorAll(".remove-button");
-        const button = allButtons[allButtons.length - 1];
-        button.addEventListener("click", () => {
-            if (product.numInCart !== 0) {
+            div.innerHTML += `
+                <p>${product.name} x${product.numInCart}</p>
+                <button class="remove-button">Remove</button>`
+
+            const button = div.querySelector(".remove-button");
+            button.addEventListener("click", () => {
                 product.numInCart--;
                 rerenderAllProducts();
                 rerenderCart();
-            }
-        })
+            })
+
+            cartItems.append(div);
+        }
     })
 }
 
