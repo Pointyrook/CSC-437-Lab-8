@@ -76,5 +76,6 @@ darkModeCheckbox.addEventListener("change", (e) => {
 
 if (localStorage.getItem("dark-mode") === "true") {
     darkModeCheckbox.dispatchEvent(new Event("change"));
-    darkModeCheckbox.checked = true;
+    darkModeCheckbox.checked = true
+    console.log(darkModeCheckbox.checked);
 }
